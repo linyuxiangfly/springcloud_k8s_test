@@ -1,0 +1,2 @@
+# springcloud_k8s_test
+ springcloud与k8s结合部署的测试代码
