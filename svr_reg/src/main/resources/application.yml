@@ -1,0 +1,20 @@
+debug: false
+spring:
+  application:
+    name: svr_reg
+
+server:
+  port: 8761
+
+eureka:
+  instance:
+    hostname: localhost
+  client:
+    #如果要做集群的话要将下面两个配置为true，默认为true
+#    #不向Eureka注册自己
+#    register-with-eureka: false
+#    #不检查其他的EurekaServer节点
+#    fetch-registry: false
+    service-url:
+      #设置eureka服务器所在的地址，查询服务和注册服务程序都注册到这个地址(服务暴露的地址)
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka/

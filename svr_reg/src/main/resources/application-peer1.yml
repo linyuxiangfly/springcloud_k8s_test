@@ -1,0 +1,15 @@
+debug: false
+spring:
+  application:
+    name: svr-reg
+
+server:
+  port: 80
+
+eureka:
+  instance:
+    hostname: peer1
+  client:
+    service-url:
+      #设置eureka服务器所在的地址，查询服务和注册服务程序都注册到这个地址(服务暴露的地址)
+      defaultZone: http://peer2/eureka/

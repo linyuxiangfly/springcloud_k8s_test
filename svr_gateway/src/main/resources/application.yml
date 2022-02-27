@@ -1,0 +1,92 @@
+debug: false
+spring:
+  application:
+    name: svr-gateway
+
+  redis:
+    host: localhost
+    password: 123456
+    port: 6379
+
+  cloud:
+    gateway:
+      routes:
+#      - id: hello
+##        uri: http://peer1:8003/
+#        uri: lb://micro-svr-power-mgr
+#        predicates:
+#        #访问/hello则会转发到lb://micro-svr-power-mgr/hello
+#        - Path=/hello
+##        - Host=**.foo.org
+##        - Path=/headers
+##        - Method=GET
+##        - Header=X-Request-Id, \d+
+##        - Query=foo, ba.
+##        - Query=baz
+##        - Cookie=chocolate, ch.p
+##        - After=2018-01-20T06:06:06+08:00[Asia/Shanghai]
+
+#      - id: prefixpath_route
+#        uri: lb://micro-svr-power-mgr
+#        predicates:
+#        - Path=/
+#        filters:
+#        #将下面地址拼到地址上如访问 / 则会转发到lb://micro-svr-power-mgr/hello
+#        - PrefixPath=/hello
+
+      # 权限管理
+      - id: power-mgr
+#        uri: http://peer1:8003/
+        uri: lb://micro-svr-power-mgr
+        predicates:
+        - Path=/powerMgr/**
+        filters:
+        #截取路径后面第1个路径拼到地址上如访问/power-mgr/hello则会转发到lb://micro-svr-power-mgr/hello
+        - StripPrefix=1
+
+server:
+  port: 8000
+
+#eureka:
+#  instance:
+#    hostname: peer1
+#  client:
+#    service-url:
+#      #设置eureka服务器所在的地址，查询服务和注册服务程序都注册到这个地址(服务暴露的地址)
+#      defaultZone: http://peer1/eureka/
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    metadata-map:
+      VERSION: 1.0.0
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://svr-reg-0.svr-reg:8000/eureka/,http://svr-reg-1.svr-reg:8000/eureka/} #这里在部署的时候会使用环境变量替换 EUREKA_DEFAULT_ZONE值
+
+feign:
+  hystrix:
+    #开启熔断器
+    enabled: false
+
+token-filter:
+  enabled: true
+  except-urls:
+    - ^/powerMgr/power.*:.*
+#    - ^/powerMgr/power/getFuncByUser:GET
+#    - ^/powerMgr/power/getMenuTreeByUser:GET
+
+# 远程调用的服务ID
+feign_client:
+  service-id-micro-svr-power-mgr: micro-svr-power-mgr
+
+# 用户授权验证类
+token-util:
+  signing_key: spring-security-@Jwt!&Secret^#
+  validTime: 10  #token有效时长,(分钟)
+  identity-type-verified:
+    'system': com.firefly.userauths.verified.IdentityTypeVerifiedPassword
+    'user': com.firefly.userauths.verified.IdentityTypeVerifiedPassword
+    'user-wx-applet': com.firefly.userauths.verified.IdentityTypeVerifiedWxApplet

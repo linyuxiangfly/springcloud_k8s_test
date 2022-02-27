@@ -1,0 +1,1246 @@
+{
+	"info": {
+		"_postman_id": "dc80e353-eec7-4eb5-8a06-482f7486cdae",
+		"name": "power_mgr",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "权限管理",
+			"item": [
+				{
+					"name": "用户",
+					"item": [
+						{
+							"name": "用户查询",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/user/get?id=1",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"user",
+										"get"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "1"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "用户查询ById",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/user/getById?id=4028ea816b53ac32016b53ad0b360000",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"user",
+										"getById"
+									],
+									"query": [
+										{
+											"key": "id",
+											"value": "4028ea816b53ac32016b53ad0b360000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "添加用户",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"abc\",\n\t\"pwd\":\"aabbcc\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/user",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改用户",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54da5a016b54da8beb0000\",\n\t\"name\":\"12345678\",\n\t\"pwd\":\"aabbcc\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/user",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除用户",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54da5a016b54da8beb0000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/user",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"user"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复用户",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54da5a016b54da8beb0000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "接口",
+					"item": [
+						{
+							"name": "添加接口",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"test\",\n\t\"url\":\"/test/aaa/bbb\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/func",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"func"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改接口",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54f3cf016b54f4dd080000\",\n\t\"name\":\"test2\",\n\t\"url\":\"http://google.com.hk\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/func",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"func"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54f3cf016b54f4dd080000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/func",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"func"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b54f3cf016b54f4dd080000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/func/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"func",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "角色",
+					"item": [
+						{
+							"name": "添加角色",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"test\",\n\t\"tag\":\"1\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/role",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改角色",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550968000000\",\n\t\"name\":\"test2\",\n\t\"tag\":\"2\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/role",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除角色",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550968000000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/role",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"role"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复角色",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550968000000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/role/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"role",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "菜单",
+					"item": [
+						{
+							"name": "添加菜单",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"name\":\"test2.3.1\",\n\t\"tag\":\"1\",\n\t\"pid\":\"4028ea816b64f2fa016b64f6b40f0005\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改菜单",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550cfe920001\",\n\t\"name\":\"test2\",\n\t\"tag\":\"2\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除菜单",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550cfe920001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复菜单",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550cfe920001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menu/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menu",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "获取菜单树",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menu/getMenuTree",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menu",
+										"getMenuTree"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "菜单接口",
+					"item": [
+						{
+							"name": "添加菜单接口",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"menu\":{\n\t\t\"id\":\"4028ea816b550948016b550cfe920001\"\n\t},\n\t\"func\":{\n\t\t\"id\":\"4028ea816b54f3cf016b54f4dd080000\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menuFunc",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menuFunc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改菜单接口",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550f92a20002\",\n\t\"menu\":{\n\t\t\"id\":\"4028ea816b550948016b550cfe920001\"\n\t},\n\t\"func\":{\n\t\t\"id\":\"4028ea816b54f3cf016b54f4dd080000\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menuFunc",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menuFunc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除菜单接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550f92a20002\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menuFunc",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menuFunc"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复菜单接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b550948016b550f92a20002\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/menuFunc/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"menuFunc",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "角色数据",
+					"item": [
+						{
+							"name": "添加角色数据接口",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t},\n\t\"type\":\"test\",\n\t\"data\":\"abc\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleData",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleData"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改角色数据接口",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64065d016b64082aa00001\",\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t},\n\t\"type\":\"test\",\n\t\"data\":\"abc\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleData",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleData"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除角色数据接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64065d016b64082aa00001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleData",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleData"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复角色数据接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64065d016b64082aa00001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleData/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleData",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "角色菜单",
+					"item": [
+						{
+							"name": "添加角色菜单接口",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t},\n\t\"menu\":{\n\t\t\"id\":\"4028ea816b550948016b550cfe920001\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleMenu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleMenu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改角色菜单接口",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b640d64016b64233ee30001\",\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t},\n\t\"menu\":{\n\t\t\"id\":\"4028ea816b550948016b550cfe920001\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleMenu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleMenu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除角色菜单接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b640d64016b64233ee30001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleMenu",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleMenu"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复角色菜单接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b640d64016b64233ee30001\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/roleMenu/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"roleMenu",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "用户角色",
+					"item": [
+						{
+							"name": "添加用户角色接口",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"user\":{\n\t\t\"id\":\"4028ea816b53ac32016b53ad0b360000\"\n\t},\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/userRole",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"userRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "修改用户角色接口",
+							"request": {
+								"method": "PUT",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64260f016b64285d020000\",\n\t\"user\":{\n\t\t\"id\":\"4028ea816b53ac32016b53ad0b360000\"\n\t},\n\t\"role\":{\n\t\t\"id\":\"4028ea816b550948016b550968000000\"\n\t}\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/userRole",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"userRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "删除用户角色接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64260f016b64285d020000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/userRole",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"userRole"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "恢复用户角色接口",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/json"
+									},
+									{
+										"key": "token",
+										"value": "{{token}}"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\n\t\"id\":\"4028ea816b64260f016b64285d020000\"\n}"
+								},
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/userRole/restore",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"userRole",
+										"restore"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "权限",
+					"item": [
+						{
+							"name": "查询用户接口权限",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}"
+									},
+									{
+										"key": "",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/power/getFuncByUser?userId=4028ea816b53ac32016b53ad0b360000",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"power",
+										"getFuncByUser"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "4028ea816b53ac32016b53ad0b360000"
+										}
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "查询用户菜单权限",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "token",
+										"value": "{{token}}"
+									},
+									{
+										"key": "",
+										"value": "",
+										"disabled": true
+									}
+								],
+								"url": {
+									"raw": "{{api_url}}/{{power_mgr_url}}/power/getMenuTreeByUser?userId=4028ea816b53ac32016b53ad0b360000",
+									"host": [
+										"{{api_url}}"
+									],
+									"path": [
+										"{{power_mgr_url}}",
+										"power",
+										"getMenuTreeByUser"
+									],
+									"query": [
+										{
+											"key": "userId",
+											"value": "4028ea816b53ac32016b53ad0b360000"
+										}
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				},
+				{
+					"name": "hello",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/{{power_mgr_url}}/hello/?name=eno",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"{{power_mgr_url}}",
+								"hello",
+								""
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "eno"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

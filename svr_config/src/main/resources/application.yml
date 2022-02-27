@@ -1,0 +1,25 @@
+debug: false
+
+spring:
+  application:
+    name: svr-config
+  cloud:
+    config:
+      server:
+        svn:
+          #http://peer1:8007/config/dev，其实访问的是下面{uri}/trunk/config-dev.properties配置文件
+          uri: https://svn.pinxuesoft.com/svn/Java/Test/spring_cloud_test/config_server/src/main/resources
+          username: px_deploy
+          password: EEjfswgk3242jf
+        default-label: trunk
+  profiles:
+    active: subversion
+
+server:
+  port: 8807
+
+eureka:
+  client:
+    service-url:
+      #设置eureka服务器所在的地址，查询服务和注册服务程序都注册到这个地址(服务暴露的地址)
+      defaultZone: http://peer1:8801/eureka/,http://peer2:8802/eureka/

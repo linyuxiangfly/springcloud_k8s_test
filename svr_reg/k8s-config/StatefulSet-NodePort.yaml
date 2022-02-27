@@ -1,0 +1,72 @@
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  name: svr-reg
+  labels:
+    service: svr-reg
+spec:
+  replicas: 2
+  serviceName: svr-reg
+  selector:
+    matchLabels:
+      service: svr-reg
+  template:
+    metadata:
+      labels:
+        service: svr-reg
+      annotations:
+        service: svr-reg
+    spec:
+      containers:
+        - name: svr-reg
+          image: hub.atguigu.com/library/svr-reg:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          env:
+            - name: MY_POD_NAME
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.name
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          readinessProbe:
+            httpGet:
+              path: /actuator/health
+              port: 8001
+              scheme: HTTP
+            failureThreshold: 3
+            initialDelaySeconds: 60
+            periodSeconds: 10
+            successThreshold: 1
+            timeoutSeconds: 10
+          resources:
+            limits:
+              # cpu: 100m
+              memory: 500Mi
+            requests:
+              # cpu: 100m
+              memory: 200Mi
+          volumeMounts:
+            - mountPath: /Charts
+              name: data
+      volumes:
+        - name: data
+  podManagementPolicy: "Parallel"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: svr-reg
+  labels:
+    service: svr-reg
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      targetPort: 8000
+      protocol: TCP
+      nodePort: 31230
+      name: http
+  selector:
+    service: svr-reg

@@ -1,0 +1,8 @@
+server:
+  port: 8804
+
+hello:
+  num: 2
+
+neo:
+  hello: 默认

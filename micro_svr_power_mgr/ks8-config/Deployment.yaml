@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: micro-svr-power-mgr
+  labels:
+    app: micro-svr-power-mgr
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: micro-svr-power-mgr
+  template:
+    metadata:
+      labels:
+        app: micro-svr-power-mgr
+    spec:
+      containers:
+        - name: micro-svr-power-mgr
+          image: hub.atguigu.com/library/micro-svr-power-mgr:0.0.1-SNAPSHOT
+          imagePullPolicy: Always
+          ports:
+            - name: http
+              containerPort: 8000
+              protocol: TCP
+          resources:
+            limits:
+              # cpu: 100m
+              memory: 500Mi
+            requests:
+              # cpu: 100m
+              memory: 200Mi
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: micro-svr-power-mgr
+  labels:
+    app: micro-svr-power-mgr
+spec:
+  type: NodePort
+  ports:
+    - port: 8000
+      targetPort: 8000
+      nodePort: 32223
+  selector:
+    app: micro-svr-power-mgr

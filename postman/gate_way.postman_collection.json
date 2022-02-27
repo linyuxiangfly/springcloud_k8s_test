@@ -1,0 +1,132 @@
+{
+	"info": {
+		"_postman_id": "daa7be13-cc49-4d34-a7bc-97fd231f7bed",
+		"name": "gate_way",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "登录",
+			"item": [
+				{
+					"name": "登录",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = JSON.parse(responseBody);",
+									"tests[\"Body matches string\"] = responseBody.has(\"ret\");",
+									"postman.setEnvironmentVariable(\"token\", jsonData.ret);"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "x-csrf-token",
+								"value": "fetch",
+								"disabled": true
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"identityType\":\"system\",\n\t\"identityFier\":\"admin\",\n\t\"credential\":\"123456\"\n}"
+						},
+						"url": {
+							"raw": "{{api_url}}/login",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mySelf",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/mySelf",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mySelf"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "mySelf Copy",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "token",
+								"value": "{{token}}"
+							}
+						],
+						"url": {
+							"raw": "{{api_url}}/mySelf",
+							"host": [
+								"{{api_url}}"
+							],
+							"path": [
+								"mySelf"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

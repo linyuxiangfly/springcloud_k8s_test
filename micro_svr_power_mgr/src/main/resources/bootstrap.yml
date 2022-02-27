@@ -1,0 +1,24 @@
+debug: false
+spring:
+  application:
+    name: micro-svr-power-mgr
+#  cloud:
+#    config:
+#      discovery:
+#        enabled: true
+#        service-id: svr-config
+#      name: config
+#      label: trunk
+##      uri: http://peer1:8007/
+#      profile: dev
+
+eureka:
+  instance:
+    leaseRenewalIntervalInSeconds: 10
+    leaseExpirationDurationInSeconds: 30
+    metadata-map:
+      VERSION: 1.0.0
+    prefer-ip-address: true
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_DEFAULT_ZONE:http://svr-reg-0.svr-reg:8000/eureka/,http://svr-reg-1.svr-reg:8000/eureka/} #这里在部署的时候会使用环境变量替换 EUREKA_DEFAULT_ZONE值

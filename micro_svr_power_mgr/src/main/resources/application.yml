@@ -1,0 +1,47 @@
+server:
+  port: 8803
+
+management:
+  endpoints:
+    web:
+      exposure:
+        #要开启所有endpoints才能访问地址：http://peer1:8003/actuator/refresh 要POST调用进行刷远程配置文件
+        include: "*"
+
+#通用数据源配置
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://10.105.218.17:3306/test_power_mgr?charset=utf8mb4&useSSL=false&serverTimezone=UTC
+    username: root
+    password: root
+# Hikari 数据源专用配置
+    hikari:
+      maximum-pool-size: 20
+      minimum-idle: 5
+# JPA 相关配置
+  jpa:
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+
+#    properties:
+#      hibernate:
+#        enable_lazy_load_no_trans: true
+
+  redis:
+    password: 123456
+    host: localhost
+    port: 6379
+    #redis数据库索引，默认0
+#    database: 0
+
+  cache:
+    type: redis
+
+redis-config:
+  expire: 60 #redis缓存过期时间S
+
+cors-filter:
+  enabled: false

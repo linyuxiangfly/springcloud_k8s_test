@@ -1,0 +1,8 @@
+server:
+  port: 8000
+
+hello:
+  num: 1
+
+neo:
+  hello: 默认
